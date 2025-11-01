@@ -1,0 +1,8 @@
+{
+    "user":{
+    "name":"John",
+    "surname":"White",
+    "age": 37,
+    "sex":"male"
+    }
+}

@@ -1,24 +1,24 @@
 #include <iostream>
-struct worker
-{
-    char name[256];
-    int age{};
-    worker * next{};
-    void addnew(worker* new_worker){
-        new_worker->next=next;
-        next=new_worker;
+struct Element {
+    Element (short num):operating_number{num}{}
+    Element* next{};
+    Element* before{};
+    void insert_after(Element* new_element) { 
+        new_element->next = next; 
+        next = new_element;
     }
+    void insert_before(Element* before_element){
+        before=before_element->before;
+        before_element=before;
+    } 
+    short operating_number;
 };
-
 int main(){
-    worker
-        id233{"John", 21},
-        id254{"David", 27},
-        id792{"Lusy", 32};
-    id233.addnew(&id254);
-    id254.addnew(&id792);
-    for(worker* cursor=&id233; cursor; cursor=cursor->next){
-        std::cout << cursor->name <<" "<< "age" << cursor->age << "\n";
+    Element a{1}, b{2}, c{3};
+    a.insert_before(&b);
+    b.insert_before(&c);
+    for(auto cursor=&a; cursor; cursor=cursor->before){
+        std::cout << cursor->operating_number;
     }
 
 }
