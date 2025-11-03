@@ -1,22 +1,15 @@
 #include <iostream>
-#include <stdexcept>
-struct Ground{
-    void forget(int x){
-        if(x==0xFACE){
-            throw std::runtime_error{"Error"};
-        }
-        std::cout << "Forgot 0x"<< std::hex<<x <<"\n";
-    }
-};
+using namespace std;
 int main(){
-    Ground ground;
-    try{
-        ground.forget(0xC0DE);
-        ground.forget(0xFACE);
-        ground.forget(0xC0FFEE);
-    }
-    catch (const std::runtime_error& e){
-        std::cout << "Cought and exception with message: "<< e.what();
-    }
+    pair <pair<int, char>, bool> hello[10];
+    tuple <char, string, int> bay;
+    hello[0]={{5, 'a'}, true};
+    cout<<hello->first.first;
+
+    cout<<"\n";
+
+    bay= make_tuple('p',"noo",15);
+    cout<<get<0>(bay)<<" "<<get<1>(bay)<<" "<<get<2>(bay);
+
 
 }
